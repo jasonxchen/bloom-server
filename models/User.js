@@ -10,7 +10,19 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String
-  }
+  },
+  myCourses: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course"
+  }],
+  purchasedCourses: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course"
+  }],
+  shoppingCart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course"
+  }]
 }, {
   timestamps: true
 })
