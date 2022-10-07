@@ -1,11 +1,9 @@
 # Bloom - Back-End Server
-
 Everyone is an expert in their own field.  We would like to expand on the gig economy to empower users to teach others the secrets of their trade.  We love how social media has showcased, that there are many different ways to earn a living.  There are experts in: AirBNB hosting, Cooking, Traveling, and even Coding. These experts can create a workshop for those who are curious in the field.
 
 We want to empower the experts to grow their business and teach others how to navigate that path.  For the ones that want to learn, we want them to Bloom.
 
 ## User Stories
-
 * As an unregistered user, I would like to sign up with email and password.
 * As an unregistered user, I would like to see all of the courses.
 * As a registered user, I would like to sign in with email and password.
@@ -60,15 +58,12 @@ We want to empower the experts to grow their business and teach others how to na
 | POST | `/courses/:courseId/comments` | CREATE | create a comment in the database and send back as json (status 201) |
 
 ## Tech Stack Used
-- HTML / CSS / JavaScript
-- React.js
-- React Hooks
+- JavaScript
 - Node.js
 - Express
 - MongoDB and Mongoose
 - Git and GitHub
 - JWT
-- Axios
 - Bcrypt for Node.js
 
 ## Install Instructions
@@ -126,7 +121,6 @@ We want to empower the experts to grow their business and teach others how to na
 
 
 ## Stretch goals
-
 * [ ] Let users leave ratings on courses
 * [ ] Let users follow other users
 * [ ] Add video content
