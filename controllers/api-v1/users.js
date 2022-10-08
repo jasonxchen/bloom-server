@@ -173,7 +173,23 @@ router.put('/:userId/cart', async (req, res) => {
   }
 })
 
-// PUT
+// PUT - ability to remove items off cart
+router.put('/:userId/cart/:courseId/remove', async (req, res) => {
+  try {
+    // find the user 
+    const user = await db.User.findById(req.params.userId)
+    // delete items from shopping cart
+    const course = await db.Course.findById(req.params.courseId)
+
+    user.shoppingCart.pull(course)
+
+    user.save()
+      res.json(user.shoppingCart)
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'internal server error' })
+  }
+})
 
 // GET /auth-locked - will redirect if bad jwt token is found
 router.get('/auth-locked', authLockedRoute, (req, res) => {
