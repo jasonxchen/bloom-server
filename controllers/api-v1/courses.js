@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
             photoLink: req.body.photoLink,
         });
         // put the created course on the account of the user who submitted the form
-        user.myCourses.push(newCourse);
+        user.myCourses.push(newCourse._id);
         await user.save();
         // send back single object json of the newly created course
         res.status(201).json(newCourse);
