@@ -27,7 +27,7 @@ We want to empower the experts to grow their business and teach others how to na
 ![wireframe](/img/route.png)
 
 ## ERDs
-![ERD](/img/clean_ERD.png)
+![ERD](/img/ERDfinal.png)
 
 ## RESTful Routes
 
@@ -43,8 +43,7 @@ We want to empower the experts to grow their business and teach others how to na
 ### Cart
 | HTTP METHOD | URL              | CRUD    | Response                              |
 | ----------- | ---------------- | ------- | ------------------------------------- |
-| PUT | `/users/:userId/cart/:courseId` | UPDATE | update a user's cart in the database and send back as json (status 200) 
-| PUT | `/users/:userId/cart` | UPDATE | update a user's cart in the database and send back as json (status 200) 
+| GET | `/users/:userId/cart` | READ | read a user's cart array and send back as json (status 200) 
 
 
 ### Courses
