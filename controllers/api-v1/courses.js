@@ -92,5 +92,27 @@ router.delete("/:courseId", async (req, res) => {
         res.status(500).json({msg: "server error" });
     }
 });
+// POST localhost:3001/api-v1/courses/:courseId/comments
+router.post("/:courseId/comments", async (req, res) => {
+    try {
+        // find the user who created the comment by id
+        const user = await db.User.findById(req.body.id);
+        // find the course commented on in the database by id
+        const course = await db.Course.findById(req.params.courseId);
+        // create the comment object
+        const newComment = {
+            content: req.body.content,
+            commenter: user
+        }
+        course.comments.push(newComment);
+        await course.save();
+        // send back single object json of the newly created comment
+        res.status(201).json(newComment);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({msg: "server error" });
+    }
+});
 
 module.exports = router;
