@@ -76,15 +76,25 @@ router.put("/:courseId", async (req, res) => {
 // DELETE localhost:3001/api-v1/courses/:courseId
 router.delete("/:courseId", async (req, res) => {
     try {
-        // delete an existing course from the database
-        const course = await db.Course.findByIdAndDelete(req.params.courseId);
-        if (course) {
-            // send back status 204: No Content
-            res.sendStatus(204);
+        // find the course from the database
+        const course = await db.Course.findById(req.params.courseId);
+        if (!course) {
+            // if no course found, send back status 404: Not Found
+            res.status(404).json({msg: "404 Not Found"});
         }
         else {
-            // if no user deleted, send back status 404: Not Found
-            res.status(404).json({msg: "404 Not Found"});
+            // find the user deleting the course from the createdBy key in the course object
+            const user = await db.User.findById(course.createdBy._id);
+            // remove reference in user.myCourses of the course to be deleted
+            const index = user.myCourses.indexOf(req.params.courseId);
+            if (index >= 0) {
+                user.myCourses.splice(index, 1);
+            }
+            await user.save();
+            // delete the specific course from the database
+            await db.Course.deleteOne(course);
+            // send back status 204: No Content
+            res.sendStatus(204);
         }
     }
     catch (error) {
