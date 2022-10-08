@@ -10,6 +10,17 @@ router.get('/', (req, res) => {
   res.json({ msg: 'welcome to the users endpoint' })
 })
 
+// GET /users/:userId - show specific user
+router.get('/:userId', async (req, res) => {
+  try {
+    const user = await db.User.findById(req.params.userId)
+    res.json(user)
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'internal server error' })
+  }
+})
+
 // POST /users/register - CREATE new user
 router.post('/register', async (req, res) => {
   try {
@@ -52,6 +63,20 @@ router.post('/register', async (req, res) => {
   }
 })
 
+// PUT /users/:userId -- update a single user
+router.put('/:userId', async (req, res) => {
+  try {
+    const options = { new: true }
+    const updateUser = await db.User.findByIdAndUpdate(req.params.userId, req.body, options)
+    res.json(updateUser)
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'internal server error' })
+  }
+})
+
+
+
 // POST /users/login -- validate login credentials
 router.post('/login', async (req, res) => {
   try {
@@ -87,6 +112,8 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ msg: 'server error'  })
   }
 })
+
+
 
 
 // GET /auth-locked - will redirect if bad jwt token is found
