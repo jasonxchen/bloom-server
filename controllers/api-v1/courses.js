@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
             photoLink: req.body.photoLink,
         });
         // put the created course on the account of the user who submitted the form
-        user.myCourses.push(newCourse);
+        user.myCourses.push(newCourse._id);
         await user.save();
         // send back single object json of the newly created course
         res.status(201).json(newCourse);
@@ -76,16 +76,48 @@ router.put("/:courseId", async (req, res) => {
 // DELETE localhost:3001/api-v1/courses/:courseId
 router.delete("/:courseId", async (req, res) => {
     try {
-        // delete an existing course from the database
-        const course = await db.Course.findByIdAndDelete(req.params.courseId);
-        if (course) {
+        // find the course from the database
+        const course = await db.Course.findById(req.params.courseId);
+        if (!course) {
+            // if no course found, send back status 404: Not Found
+            res.status(404).json({msg: "404 Not Found"});
+        }
+        else {
+            // find the user deleting the course from the createdBy key in the course object
+            const user = await db.User.findById(course.createdBy._id);
+            // remove reference in user.myCourses of the course to be deleted
+            const index = user.myCourses.indexOf(req.params.courseId);
+            if (index >= 0) {
+                user.myCourses.splice(index, 1);
+            }
+            await user.save();
+            // delete the specific course from the database
+            await db.Course.deleteOne(course);
             // send back status 204: No Content
             res.sendStatus(204);
         }
-        else {
-            // if no user deleted, send back status 404: Not Found
-            res.status(404).json({msg: "404 Not Found"});
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({msg: "server error" });
+    }
+});
+// POST localhost:3001/api-v1/courses/:courseId/comments
+router.post("/:courseId/comments", async (req, res) => {
+    try {
+        // find the user who created the comment by id
+        const user = await db.User.findById(req.body.id);
+        // find the course commented on in the database by id
+        const course = await db.Course.findById(req.params.courseId);
+        // create the comment object
+        const newComment = {
+            content: req.body.content,
+            commenter: user
         }
+        course.comments.push(newComment);
+        await course.save();
+        // send back single object json of the newly created comment
+        res.status(201).json(newComment);
     }
     catch (error) {
         console.log(error);
