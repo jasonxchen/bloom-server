@@ -76,7 +76,6 @@ router.put('/:userId', async (req, res) => {
 })
 
 
-
 // POST /users/login -- validate login credentials
 router.post('/login', async (req, res) => {
   try {
