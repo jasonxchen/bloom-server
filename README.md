@@ -35,10 +35,10 @@ We want to empower the experts to grow their business and teach others how to na
 | HTTP METHOD | URL              | CRUD    | Response                              |
 | ----------- | ---------------- | ------- | ------------------------------------- |
 | GET | `/users/:userId` | READ | return a specific user as json (status 200) |
-| POST | `/users` | CREATE | create a user in the database and send back as json (status 201) |
+| POST | `/users/register` | CREATE | create a user in the database and send back as json (status 201) |
 | PUT | `/users/:userId` | UPDATE | update a user in the database and send back as json (status 200) |
 | DELETE | `/users/:userId` | DESTROY | delete a user from the database (status 204) |
-| PUT | `/users/:userId` | UPDATE | update a user in the database and send back as json (status 200) |
+
 
 ### Cart
 | HTTP METHOD | URL              | CRUD    | Response                              |
