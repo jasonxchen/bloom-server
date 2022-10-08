@@ -123,6 +123,17 @@ router.delete('/:userId', async (req, res) => {
   }
 })
 
+// GET /cart -- return array of all items in cart
+// GET /users/:userId - show specific user then show their shoppingcart
+router.get('/:userId/cart', async (req, res) => {
+  try {
+    const user = await db.User.findById(req.params.userId)
+    res.json(user.shoppingCart)
+  } catch(err) {
+    console.log(err)
+    res.status(500).json({ message: 'internal server error' })
+  }
+})
 
 // GET /auth-locked - will redirect if bad jwt token is found
 router.get('/auth-locked', authLockedRoute, (req, res) => {
