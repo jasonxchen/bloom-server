@@ -10,6 +10,11 @@ router.get('/', (req, res) => {
   res.json({ msg: 'welcome to the users endpoint' })
 })
 
+// GET /auth-locked - will redirect if bad jwt token is found
+router.get('/auth-locked', authLockedRoute, (req, res) => {
+  res.json( { msg: 'welcome to the private route!' })
+})
+
 // GET /users/:userId - show specific user
 router.get('/:userId', async (req, res) => {
   try {
@@ -189,11 +194,6 @@ router.put('/:userId/cart/:courseId/remove', async (req, res) => {
     console.log(err)
     res.status(500).json({ message: 'internal server error' })
   }
-})
-
-// GET /auth-locked - will redirect if bad jwt token is found
-router.get('/auth-locked', authLockedRoute, (req, res) => {
-  res.json( { msg: 'welcome to the private route!' })
 })
 
 module.exports = router
