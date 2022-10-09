@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authLockedRoute = require('./authLockedRoute')
 
-
+// USER ROUTES ------>>
 // GET /users - test endpoint
 router.get('/', (req, res) => {
   res.json({ msg: 'welcome to the users endpoint' })
@@ -123,7 +123,7 @@ router.delete('/:userId', async (req, res) => {
   }
 })
 
-// GET /cart -- return array of all items in cart
+// CART ROUTES ------>>
 // GET /users/:userId - show specific user then show their shoppingcart
 router.get('/:userId/cart', async (req, res) => {
   try {
