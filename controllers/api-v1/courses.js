@@ -28,8 +28,8 @@ router.get("/:courseId", async (req, res) => {
 // POST localhost:3001/api-v1/courses
 router.post("/", async (req, res) => {
     try {
-        // find the user who created the course by id
-        const user = await db.User.findById(req.body.id);
+        // find the user who created the course by createdBy: "id"
+        const user = await db.User.findById(req.body.createdBy);
         // create the new course in the database
         const newCourse = await db.Course.create({
             title: req.body.title,
@@ -105,8 +105,8 @@ router.delete("/:courseId", async (req, res) => {
 // POST localhost:3001/api-v1/courses/:courseId/comments
 router.post("/:courseId/comments", async (req, res) => {
     try {
-        // find the user who created the comment by id
-        const user = await db.User.findById(req.body.id);
+        // find the user who created the comment by commenter: "id"
+        const user = await db.User.findById(req.body.commenter);
         // find the course commented on in the database by id
         const course = await db.Course.findById(req.params.courseId);
         // create the comment object
