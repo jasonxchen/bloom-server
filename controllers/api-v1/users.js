@@ -182,7 +182,7 @@ router.put('/:userId/cart', async (req, res) => {
 router.put('/:userId/cart/:courseId/remove', async (req, res) => {
   try {
     // find the user 
-    const user = await db.User.findById(req.params.userId)
+    const user = await db.User.findById(req.params.userId).populate("shoppingCart");
     // delete items from shopping cart
     const course = await db.Course.findById(req.params.courseId)
 
