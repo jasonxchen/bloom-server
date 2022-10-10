@@ -1,7 +1,8 @@
-
+const bcrypt = require("bcryptjs");
 const { User, Course } = require('./models')
 
 const main = async () => {
+    const hashedPassword = await bcrypt.hash("123", 12);
 
     await User.deleteMany({})
     await Course.deleteMany({})
@@ -9,7 +10,7 @@ const main = async () => {
     const julieann = await User.create({
         name: 'Julieann',
         email: 'julieann@gmail.com',
-        password: '1234',
+        password: hashedPassword,
         myCourses: [],
         purchasedCourses: [],
         shoppingCart: [],
@@ -18,7 +19,7 @@ const main = async () => {
     const davidallen = await User.create({
         name: 'David Allen',
         email: 'david@gmail.com',
-        password: '1234',
+        password: hashedPassword,
         myCourses: [],
         purchasedCourses: [],
         shoppingCart: [],
@@ -27,7 +28,7 @@ const main = async () => {
     const danielandbritt = await User.create({
         name: 'Daniel and Britt',
         email: 'daniel@gmail.com',
-        password: '1234',
+        password: hashedPassword,
         myCourses: [],
         purchasedCourses: [],
         shoppingCart: [],
@@ -36,7 +37,7 @@ const main = async () => {
     const cecile = await User.create({
         name: 'Cecile',
         email: 'cecile@gmail.com',
-        password: '1234',
+        password: hashedPassword,
         myCourses: [],
         purchasedCourses: [],
         shoppingCart: [],
@@ -45,7 +46,7 @@ const main = async () => {
     const kim = await User.create({
         name: 'Kim',
         email: 'kim@gmail.com',
-        password: 'to1234fu',
+        password: hashedPassword,
         myCourses: [],
         purchasedCourses: [],
         shoppingCart: [],
