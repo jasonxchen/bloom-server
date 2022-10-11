@@ -16,7 +16,13 @@ router.get("/", async (req, res) => {
 // GET localhost:3001/api-v1/courses/:courseId
 router.get("/:courseId", async (req, res) => {
     try {
-        const course = await db.Course.findById(req.params.courseId);
+        const course = await db.Course.findById(req.params.courseId).populate({
+            path: "comments",
+            populate: [{
+                path: "commenter",
+                model: "User"
+            }]
+        });
         // send back json of a single course object
         res.json(course);
     }
