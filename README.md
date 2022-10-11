@@ -1,7 +1,9 @@
-# Bloom - Back-End Server
+# Bloom
 Everyone is an expert in their own field.  We would like to expand on the gig economy to empower users to teach others the secrets of their trade.  We love how social media has showcased, that there are many different ways to earn a living.  There are experts in: AirBNB hosting, Cooking, Traveling, and even Coding. These experts can create a workshop for those who are curious in the field.
 
 We want to empower the experts to grow their business and teach others how to navigate that path.  For the ones that want to learn, we want them to Bloom.
+
+Link to Deployed App[TBD]
 
 ## User Stories
 * As an unregistered user, I would like to sign up with email and password.
@@ -14,11 +16,12 @@ We want to empower the experts to grow their business and teach others how to na
 * As a registered user, I would like to update courses.
 * As a registered user, I would like to delete courses.
 * As a signed in user, I would like to add and remove courses from a shopping cart.
-* As a signed in user, I would like to purchase products in a shopping cart. 
+* As a signed in user, I would like to purchase courses in a shopping cart. 
 * As a signed in user, I would like to see all my past courses.
 * As an unregistered user, I would like to see all of the courses.
 
-## Layout
+## Snapshot 
+need updated snapshot of app - once its live
 ![Main Layout](/img/mainlayout.png)
 
 ![Profile Layout](/img/profilelayout.png)
@@ -43,7 +46,10 @@ We want to empower the experts to grow their business and teach others how to na
 ### Cart
 | HTTP METHOD | URL              | CRUD    | Response                              |
 | ----------- | ---------------- | ------- | ------------------------------------- |
-| GET | `/users/:userId/cart` | READ | read a user's cart array and send back as json (status 200) 
+| GET | `/users/:userId/cart` | READ | see a user's cart as json(status 200) |
+| PUT | `/users/:userId/cart/:courseId` | UPDATE | add course to cart json (status 200) |
+| PUT | `/users/:userId/cart/:courseId/remove` | UPDATE | ability to remove cart as json (status 200) |
+| PUT | `/users/:userId/cart/:courseId` | UPDATE | checkout form cart as json (status 200) |
 
 
 ### Courses
@@ -56,6 +62,14 @@ We want to empower the experts to grow their business and teach others how to na
 | DELETE | `/courses/:courseId` | DESTROY | delete a course from the database (status 204) |
 | POST | `/courses/:courseId/comments` | CREATE | create a comment in the database and send back as json (status 201) |
 
+
+## Our Approach Used
+We had open discussion about ideas to for an app that best displayed Unit 3 Lessons.  After we came up with 5 ideas we decided that a social media e-commerce site would be the best option.  We used Miro to created the User Stories and mapped out the Component Hierarchy.  We implemented a SCRUM dashboard and put sticky notes on the Hierarchy to make sure there was no overlap with teammates.
+
+From there, we allowed each member to come and chose what they wanted to work based on their schedule.  We started to tackle the backend routes first, then completed the front end routes.  Once we reached MVP, we started to implement Tailwind and Styling.  
+
+We created a checklist of Big Milestones, Stretch Goals, Bugs and Styling Checklist.  We ranked each item from high to low priority.   We continually tackled the highest priorities to polish the app.
+
 ## Tech Stack Used
 - JavaScript
 - Node.js
@@ -64,50 +78,66 @@ We want to empower the experts to grow their business and teach others how to na
 - Git and GitHub
 - JWT
 - Bcrypt for Node.js
+- Tailwind
+- React
+
+Thanks to Node.js this React web application runs off an Express.js server with a non relational database MongoDB. The HTTP requests Express recieves goes through logic written in JavaScript and interacts with the database using queries.  Depending on the request, certain views are shown to the user with the help of EJS rendering coupled with styling from Tailwind CSS element classes.  The react-router-dom was used to pass props from parent to child.  
+
 
 ## Install Instructions
-- TBD install instructions
+**Client Repo Installation Instructions**
+1. Fork on GitHub and clone to local machine
+2.  Run `npm install` to install dependencies
+3.  Touch a `.env.local` file and add the line `REACT_APP_SERVER_URL=http://localhost:3001`
+4. Run `npm run start` to start client app
+5. Navigate to http://localhost:3000/ to interact with the web app
+
+**Server Repo Installation Instructions**
+1. Fork on GitHub and clone to local machine
+2. Run `npm install` to install dependencies
+3. Touch a `.env` file and add the line `JWT_SECRET="[SECRET_KEY_HERE]"`
+4. (optional) run `node seed.js` to seed the database
+5. Run `nodemon` to start server
 
 
 ## MVP goals
 
 **Functionality**
-* [ ] User has ability to signup
-* [ ] User can see all of the courses.
+* [X] User has ability to signup
+* [X] User can see all of the courses.
 
-* [ ] User sign in with password and email
-* [ ] User can change password.
-* [ ] User can sign out
+* [X] User sign in with password and email
+* [X] User can change password.
+* [X] User can sign out
 
-* [ ] User can create courses.
-* [ ] User can edit courses.
-* [ ] User can update courses.
-* [ ] User delete courses.
+* [X] User can create courses.
+* [X] User can edit courses.
+* [X] User can update courses.
+* [X] User delete courses.
 
-* [ ] User can add to shopping cart
-* [ ] User can use stripe https://github.com/azmenak/react-stripe-checkout
-* [ ] User can see past orders
-* [ ] As an unregistered user, I would like to see all of the courses.
+* [X] User can add and remove from shopping cart
+* [X] User can checkout from a shopping cart.
+* [X] Unregistered user can see all of the courses.
 
 **MVP Goals**
-* [ ] Full Stack App - backend & front end from Unit 3
+* [X] Full Stack App - backend & front end from Unit 3
 * [ ] Interactive Front End - modern front end
-* [ ] Complete Product - CRUD - couple models
-* [ ] Thoughtful User Stories - to know where to build / scrap
+* [X] Complete Product - CRUD - couple models
+* [X] Thoughtful User Stories - to know where to build / scrap
 * [ ] Visually Impressive Design - wow future clients & employers
 * [ ] Deploy online - publicly accessible
 
-* [ ] Working app, built by whole team
+* [X] Working app, built by whole team
 * [ ] Link to your hosted app - URL in Github
 * [X] Team hosted repository
 
 **README**
 * [ ] Completed README
 * [X] Technology Used
-* [ ] Couple Paragraphs General Approach you took
-* [ ] Installation Instructions
-* [ ] Link to User Stories
-* [ ] Link to Wireframes
+* [X] Couple Paragraphs General Approach you took
+* [X] Installation Instructions
+* [X] Link to User Stories
+* [X] Link to Wireframes
 * [ ] RESTful routing chart
 * [ ] Unsolved Problems / Major Hurdles
 
@@ -120,12 +150,14 @@ We want to empower the experts to grow their business and teach others how to na
 
 
 ## Stretch goals
-* [ ] Let users leave ratings on courses
-* [ ] Let users follow other users
-* [ ] Add video content
-* [ ] Add real users and their curated courses
+* [ ] Let users leave star ratings on courses
 * [ ] Ability to reply to comments
 * [ ] User profile picture
 * [ ] User link
 * [ ] User description profile
-* [ ] Star Rating (omdb)
+
+## Major Hurdles 
+- Github Workflow - We had a few hiccups with some merge conflicts, because of teammates overlapping on the same components.  We overcame this by using SCRUM and sticky Notes on the Hierarchy. 
+- Axios was not syncing properly to the user id.  We used console.log testing to debug the problem.
+- Shopping cart was mapping the wrong output on the backend.  Used console.log to debug the problem and was an easy fix.
+- Seed - not a big problem but needed a solution to store data to start the app with initial content. 
