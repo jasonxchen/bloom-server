@@ -16,7 +16,13 @@ router.get("/", async (req, res) => {
 // GET localhost:3001/api-v1/courses/:courseId
 router.get("/:courseId", async (req, res) => {
     try {
-        const course = await db.Course.findById(req.params.courseId);
+        const course = await db.Course.findById(req.params.courseId).populate({
+            path: "comments",
+            populate: [{
+                path: "commenter",
+                model: "User"
+            }]
+        });
         // send back json of a single course object
         res.json(course);
     }
@@ -108,7 +114,13 @@ router.post("/:courseId/comments", async (req, res) => {
         // find the user who created the comment by commenter: "id"
         const user = await db.User.findById(req.body.commenter);
         // find the course commented on in the database by id
-        const course = await db.Course.findById(req.params.courseId);
+        const course = await db.Course.findById(req.params.courseId).populate({
+            path: "comments",
+            populate: [{
+                path: "commenter",
+                model: "User"
+            }]
+        });
         // create the comment object
         const newComment = {
             content: req.body.content,
@@ -117,7 +129,7 @@ router.post("/:courseId/comments", async (req, res) => {
         course.comments.push(newComment);
         await course.save();
         // send back single object json of the newly created comment
-        res.status(201).json(newComment);
+        res.status(201).json(course);
     }
     catch (error) {
         console.log(error);
