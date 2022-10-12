@@ -128,7 +128,33 @@ router.post("/:courseId/comments", async (req, res) => {
         }
         course.comments.push(newComment);
         await course.save();
-        // send back single object json of the newly created comment
+        // send back single object json of the course related to the new comment
+        res.status(201).json(course);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({msg: "server error" });
+    }
+});
+// PUT localhost:3001/api-v1/courses/:courseId/comments/:commentId/delete
+router.put("/:courseId/comments/:commentId/delete", async (req, res) => {
+    try {
+        // find the course parent doc in the database by id
+        const course = await db.Course.findById(req.params.courseId).populate({
+            path: "comments",
+            populate: [{
+                path: "commenter",
+                model: "User"
+            }]
+        });
+        course.comments.forEach(comment => {
+            if (comment._id.toString() === req.params.commentId) {
+                course.comments.pull(comment);
+                return;
+            }
+        })
+        await course.save();
+        // send back single object json of the course the comment was on
         res.status(201).json(course);
     }
     catch (error) {
