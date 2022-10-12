@@ -147,7 +147,7 @@ const main = async () => {
         createdBy: julieann,
         price: 100,
         description: "Hosted over 50 Picnic Events. Learn the steps needed to create your own event. Help create experiences that will bring joy to others.  Learn the do and don'ts of the business.  Learn how to manage a team and grow as your business grows.  Q&A session at the end of class.",
-        photoLink: "https://i.imgur.com/vrMyvlB.png",
+        photoLink: "https://i.imgur.com/bbBE46t.png",
         comments: [],
       });
     const course2 = await Course.create({
@@ -155,7 +155,7 @@ const main = async () => {
         createdBy: davidallen,
         price: 50,
         description: "Grossed over $2million in clothing salesLearn how I started as an intern and then started my own distribution company. Learn how to work with local shops and big retailers.  Sales, Marketing, and Business tips.  Learn the importance of connecting to your buyers.  Meet and Greet the team of the Goods Group.",
-        photoLink: "https://i.imgur.com/41F8USI.png",
+        photoLink: "https://i.imgur.com/zO2FEG8.png",
         comments: [],
     });
     const course3 = await Course.create({
@@ -163,7 +163,7 @@ const main = async () => {
         createdBy: danielandbritt,
         price: 50,
         description: "Hosted over 50 AirBNB Guests. Learn how we turned our passion into a thriving business. Learn about the personal touch of customer service. Lead with passion and authenticity, then then business aspect will follow.  Learn how we as dreamers are staying true to ourselves.",
-        photoLink: "https://i.imgur.com/F1ysIHf.png",
+        photoLink: "https://i.imgur.com/yuRVzkx.png",
         comments: [],
     });
     const course4 = await Course.create({
@@ -171,7 +171,7 @@ const main = async () => {
         createdBy: cecile,
         price: 75,
         description: "Scuba Dived over 20 locations worldwide.  This is an intro to Scuba Diving. Learn what it takes to get certified as a diver.   Dive deep into some fantastic stories of Ocean's magnificent creatures: dolphins, sting rays, whale sharks and many more.  If you're ready to dive into a new world, join today!",
-        photoLink: "https://i.imgur.com/SoQxbnG.png",
+        photoLink: "https://i.imgur.com/9m3YclC.png",
         comments: [],
     });
     const course5 = await Course.create({
@@ -179,7 +179,7 @@ const main = async () => {
         createdBy: kim,
         price: 75, 
         description: "Styled over 300 Clients. Learn the basics of the Hair Styling Business. Learn what classes you need to get certified.  Learn how to manage your book of clients into and a successful business.   Hear stories about working with American's Next Top model.  Q&A Session at the end of class.",
-        photoLink: "https://i.imgur.com/GseuijJ.png",
+        photoLink: "https://i.imgur.com/hcl85zZ.png",
         comments: [],    
     })
     const course6 = await Course.create({
