@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const { User, Course } = require('./models')
+require("dotenv").config();
 
 const main = async () => {
     const hashedPassword = await bcrypt.hash("123", 12);
