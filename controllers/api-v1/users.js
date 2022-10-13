@@ -147,9 +147,13 @@ router.put('/:userId/cart/:courseId', async (req, res) => {
     const user = await db.User.findById(req.params.userId)
     // pull course ID
     const course = await db.Course.findById(req.params.courseId)
-    // add courseID to updatedUserCart Array
-    user.shoppingCart.push(course._id)
-    user.save()
+    const index = user.shoppingCart.indexOf(req.params.courseId);
+    // index of -1 means the course is not in the shoppingCart yet
+    if (index === -1) {
+      // add courseId to updatedUserCart Array
+      user.shoppingCart.push(course._id);
+      user.save();
+    }
     res.json(user.shoppingCart)
 
   } catch(err) {
