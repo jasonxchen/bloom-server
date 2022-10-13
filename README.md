@@ -3,7 +3,7 @@ Everyone is an expert in their own field.  We would like to expand on the gig ec
 
 We want to empower the experts to grow their business and teach others how to navigate that path.  For the ones that want to learn, we want them to Bloom.
 
-Link to Deployed App[TBD]
+To launch the app click: [Bloom](https://63474bcce7c33a0f52f33153--curious-choux-137367.netlify.app/) 
 
 ## User Stories
 * As an unregistered user, I would like to sign up with email and password.
@@ -21,13 +21,14 @@ Link to Deployed App[TBD]
 * As an unregistered user, I would like to see all of the courses.
 
 ## Snapshot 
-need updated snapshot of app - once its live
-![Main Layout](/img/mainlayout.png)
+![Main Layout](/img/bloomMain.png)
 
-![Profile Layout](/img/profilelayout.png)
+![Profile Layout](/img/bloomCourses.png)
 
 ## Wireframes
-![wireframe](/img/route.png)
+![Backend Route](/img/backendroute.png) 
+![Front User](/img/frontendUser.png) 
+![Front Course](/img/frontendCourse.png) 
 
 ## ERDs
 ![ERD](/img/ERDfinal.png)
@@ -121,35 +122,28 @@ Thanks to Node.js this React web application runs off an Express.js server with 
 
 **MVP Goals**
 * [X] Full Stack App - backend & front end from Unit 3
-* [ ] Interactive Front End - modern front end
+* [X] Interactive Front End - modern front end
 * [X] Complete Product - CRUD - couple models
 * [X] Thoughtful User Stories - to know where to build / scrap
-* [ ] Visually Impressive Design - wow future clients & employers
-* [ ] Deploy online - publicly accessible
+* [X] Visually Impressive Design - wow future clients & employers
+* [X] Deploy online - publicly accessible
 
 * [X] Working app, built by whole team
-* [ ] Link to your hosted app - URL in Github
+* [X] Link to your hosted app - URL in Github
 * [X] Team hosted repository
 
 **README**
-* [ ] Completed README
+* [X] Completed README
 * [X] Technology Used
 * [X] Couple Paragraphs General Approach you took
 * [X] Installation Instructions
 * [X] Link to User Stories
 * [X] Link to Wireframes
-* [ ] RESTful routing chart
-* [ ] Unsolved Problems / Major Hurdles
-
-**Evaluation**
-* [ ] Project Workflow
-* [ ] Technical Requirement
-* [ ] Creativity
-* [ ] Code Quality
-* [ ] Problem Solving
-
+* [X] RESTful routing chart
+* [X] Unsolved Problems / Major Hurdles
 
 ## Stretch goals
+* [X] Styling
 * [ ] Let users leave star ratings on courses
 * [ ] Ability to reply to comments
 * [ ] User profile picture
