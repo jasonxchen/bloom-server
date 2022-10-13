@@ -9,7 +9,7 @@ const main = async () => {
     await Course.deleteMany({})
 
     const julieann = await User.create({
-        name: 'Julieann',
+        name: 'Julie Ann',
         email: 'julieann@gmail.com',
         password: hashedPassword,
         myCourses: [],
@@ -147,7 +147,7 @@ const main = async () => {
         title: "Decorated Events",
         createdBy: julieann,
         price: 100,
-        description: "Hosted over 50 Picnic Events. Learn the steps needed to create your own event. Help create experiences that will bring joy to others.  Learn the do and don'ts of the business.  Learn how to manage a team and grow as your business grows.  Q&A session at the end of class.",
+        description: "Hosted over 50 Curated Events. Learn the steps needed to create your own event. Help create experiences that will bring joy to others.  Learn the do and don'ts of the business.  Learn how to manage a team and grow as your business grows.  Q&A session at the end of class.",
         photoLink: "https://i.imgur.com/bbBE46t.png",
         comments: [],
       });
@@ -232,7 +232,7 @@ const main = async () => {
         comments: [],
     })
     const course12 = await Course.create({
-        title: "Spear Hunting Fish in the Pacific",
+        title: "Spearfishing in the Pacific",
         createdBy: ron,
         price: 100,
         description: "Caught over 2000 lbs of fish.  Being in ocean brings you closer you nature and gives you a great appreciation to life itself.  Learn how a weekend fishing with friends will last a lifetime of stories shared together", 
